@@ -110,6 +110,23 @@ class ActorTest(unittest.TestCase):
             a.angle += 1.0
         self.assertEqual(a.pos, (100.0, 100.0))
 
+    def test_move(self):
+        """Assuming the actor's initial face(0 angle) is on the right"""
+        a = Actor('alien', pos=(100.0, 100.0))
+        a.angle = 0   #move right
+        a.move(10)
+        self.assertEqual(a.pos,(110,100))
+        a.angle = 90  #move up
+        a.move(10)
+        self.assertEqual(a.pos,(110,90))
+        a.angle = 180 #move left
+        a.move(10)
+        self.assertEqual(a.pos,(100,90))
+        a.angle = 270 #move down
+        a.move(10)
+        self.assertEqual(a.pos,(100,100))
+        
+
     def test_opacity_default(self):
         """Ensure opacity is initially set to its default value."""
         a = Actor('alien')

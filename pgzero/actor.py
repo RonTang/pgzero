@@ -355,3 +355,13 @@ class Actor:
 
     def unload_image(self):
         loaders.images.unload(self._image_name)
+
+    def move(self,distance):
+        """Move this actor forwards a distance, according to its angle.
+           Assuming the actor's initial face(0 angle) is on the right"""
+        dx = cos(radians(self._angle))
+        dy = -sin(radians(self._angle))
+        myx,myy = self.pos
+        self.pos = myx+dx*distance,myy+dy*distance
+       
+    
